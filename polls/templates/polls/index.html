@@ -1,0 +1,41 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
+{% if latest_question_list %}
+<h1>It is {% now "jS F Y H:i" %}
+</h1>
+<ul>
+	{% for question in latest_question_list %}
+	<li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+	{% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+<html>
+	<head>
+		<style type="text/css">
+			html, body { height: 100%; margin: 0; padding: 0; }
+			#map { height: 60%; }
+		</style>
+	</head>
+	<body>
+		<div id="map"></div>
+		<script type="text/javascript">
+			
+			var map;
+			function initMap() {
+				map = new google.maps.Map(document.getElementById('map'), {
+				center: {lat: 35.710, lng: 139.766},
+				zoom: 16
+		});
+				
+	}
+	
+</script>
+<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAo_vK6cP90kRaLcZ7OErbF9KV8b_3aXvI&callback=initMap">
+</script>
+</body>
+</html>

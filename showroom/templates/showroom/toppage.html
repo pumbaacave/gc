@@ -1,0 +1,46 @@
+
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'showroom/toppage.css' %}" />
+
+<html>
+	<!DOCTYPE html>
+	<head>
+		<script type="text/javascript">
+			function initMap() {
+				var myLatLng = {lat: {{targetDict.Lat}}, lng: {{targetDict.Log}}};
+				var map = new google.maps.Map(document.getElementById('map'), {
+						center: {lat: 35.710, lng: 139.766},
+						zoom: 16
+				});
+				var marker = new google.maps.Marker({
+						position: myLatLng,
+						map: map,
+						title: 'Latest Position!'
+				});
+			}
+			
+		</script>
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAo_vK6cP90kRaLcZ7OErbF9KV8b_3aXvI&callback=initMap">
+		</script>
+	</head>
+	<body>
+		
+		<div id="header">
+			<h1>SERVICE TOP PAGE   it is {% now "jS F Y H:i" %}</h1>
+		</div>
+		
+		<div id="nav">
+			London<br>
+			Paris<br>
+			Tokyo
+		</div>
+		
+		<div id="map"></div>
+		
+		<div id="footer">
+			ALL Details are Under Developing
+		</div>
+
+</body>
+</html>
